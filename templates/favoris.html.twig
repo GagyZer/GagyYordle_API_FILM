@@ -15,9 +15,10 @@
             {% for favori in favoris %}
                 <tr>
                     <td>{{ favori.id }}</td>
-                    <td>{{ favori.idMovie }} </td>
-                    <td>{{ favori.idSerie }} </td>
-                    <td>{{ favori.title }} </td>
+                    <td>{{ favori.idMovie }}</td>
+                    <td>{{ favori.idSerie }}</td>
+                    <td>{{ favori.title }}</td>
+                    <td><a href="{{ path('remove_favori', {'id': favori.id}) }}" class="btn btn-danger">Supprimer</a></td>
                 </tr>
             {% endfor %}
         </table>

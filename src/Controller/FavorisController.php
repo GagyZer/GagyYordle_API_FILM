@@ -141,4 +141,22 @@ class FavorisController extends AbstractController{
         return $this->render('favoris.html.twig');
     }
 
+    #[Route('/remove/{id}', name: 'remove_favori')]
+    public function removeFavori(int $id, EntityManagerInterface $entityManager): Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $favori = $entityManager->getRepository(Favorite::class)->find($id);
+
+        if (!$favori) {
+            throw $this->createNotFoundException('Favori non trouvé');
+        }
+
+        $entityManager->remove($favori);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Favori supprimé avec succès !');
+
+        return new Response('Le favori a été supprimé avec succès !');
+    }
+
 }
