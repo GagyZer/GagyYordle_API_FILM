@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-white text-center mt-4 mb-4">Liste des favoris :</h1>
+    <div class="container">
+        <table class="table table-bordered text-white">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>ID Film</th>
+                <th>ID Serie</th>
+                <th>Titre</th>
+            </tr>
+            </thead>
+            {% for favori in favoris %}
+                <tr>
+                    <td>{{ favori.id }}</td>
+                    <td>{{ favori.idMovie }} </td>
+                    <td>{{ favori.idSerie }} </td>
+                    <td>{{ favori.title }} </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
