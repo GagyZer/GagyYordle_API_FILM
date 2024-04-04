@@ -11,7 +11,11 @@
                         <a class="text-decoration-none" href="{{ path('movie_details', {'id': movie.id }) }}">
                             <h5 class="card-title text-center custom-title">{{ movie.title }}</h5>
                         </a>
-                        <p class="card-text custom-justify text-ellipsis mx-auto">{{ movie.overview|slice(0, 350) }}{{ movie.overview|length > 150 ? '...' : '' }}</p>
+                        {% if movie.overview is empty %}
+                            <p class="card-text custom-justify text-ellipsis mx-auto">Il n'y a pas de description</p>
+                        {% else %}
+                            <p class="card-text custom-justify text-ellipsis mx-auto">{{ movie.overview|slice(0, 350) }}{{ movie.overview|length > 150 ? '...' : '' }}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -36,4 +40,3 @@
         }
     </style>
 {% endblock %}
-
