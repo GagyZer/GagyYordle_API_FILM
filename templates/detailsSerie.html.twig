@@ -75,10 +75,12 @@
                                     </div>
                                     <div class="tab-pane fade show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                                         <ul>
-                                            {% for actor in actors %}
-                                                <li> <img src="{{ actor.urlPicture }}" class="card-img-top img-fluid img-thumbnail avatar_actor" alt="image acteur">
-                                                    - {{ actor.name }}</li>
-                                            {% endfor %}
+        {% for actor in actors %}
+            <li>
+                <img src="{{ actor.urlPicture }}" class="card-img-top img-fluid img-thumbnail avatar_actor" alt="{{ actor.name }}" onerror="this.onerror=null; this.src='/images/imagedefault.jpg';">
+                - {{ actor.name }}
+            </li>
+        {% endfor %}
                                         </ul>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
