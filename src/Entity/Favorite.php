@@ -21,7 +21,8 @@ class Favorite
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $title = null;
-
+    
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'favorites')]
     private ?User $user = null;
 
 

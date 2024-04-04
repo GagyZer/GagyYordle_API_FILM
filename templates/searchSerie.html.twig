@@ -8,8 +8,9 @@
                 {% for serie in searchResults.results %}
                     <div class="col-md-4">
                         <div class="card mb-4">
-                            <img src="https://image.tmdb.org/t/p/original{{ serie.poster_path }}" alt="{{ serie.name }}">
-                            <div class="card-title-overlay">
+                            <div class="image-container" style="width: 348px; height: 522px; overflow: hidden;">
+                                <img src="https://image.tmdb.org/t/p/original{{ serie.poster_path }}" alt="{{ serie.name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>                            <div class="card-title-overlay">
                                 <a class="text-decoration-none" href="{{ path('serie_details', {'id': serie.id }) }}">
                                     <h5 class="card-title text-center custom-title">{{ serie.name }}</h5>
                                 </a>

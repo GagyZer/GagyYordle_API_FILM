@@ -16,19 +16,39 @@
         {% block stylesheets %}
              {% endblock %}
         {% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Récupérer les éléments du formulaire
+        const form = document.getElementById('search-form');
+        const input = document.getElementById('search-input');
+        const button = document.getElementById('search-button');
+
+        // Ajouter un écouteur d'événement sur le champ de recherche
+        input.addEventListener('input', function () {
+            // Vérifier si le champ de recherche est vide
+            if (input.value.trim() === '') {
+                // Désactiver le bouton de soumission si le champ est vide
+                button.disabled = true;
+            } else {
+                // Activer le bouton de soumission si le champ n'est pas vide
+                button.disabled = false;
+            }
+        });
+    });
+</script>
              {% endblock %}
     </head>
     <header>
         <header class="bg-light text-black">
             <div class="container d-flex justify-content-between align-items-center py-2">
                 <div class="search-section">
-                    <form class="search-form form-inline" action="{{ path('searchMedia') }}" method="get">
-                        <select class=" search-select " name="media">
+                    <form class="search-form form-inline" id="search-form" action="{{ path('searchMedia') }}" method="get">
+                        <select class="search-select" name="media" required>
                             <option value="movie">Films</option>
                             <option value="tv">Séries</option>
                         </select>
-                        <input class="form-control me-2 search-input" type="search" name="query" placeholder="Recherche" aria-label="Recherche">
-                        <button class="btn btn-outline-dark search-button" type="submit">Rechercher</button>
+                        <input class="form-control me-2 search-input" type="search" id="search-input" name="query" placeholder="Recherche" aria-label="Recherche" required>
+                        <button class="btn btn-outline-dark search-button" id="search-button" type="submit" disabled>Rechercher</button>
                     </form>
                 </div>
                 <ul class="nav">

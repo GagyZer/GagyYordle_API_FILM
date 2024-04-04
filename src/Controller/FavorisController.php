@@ -25,11 +25,11 @@ class FavorisController extends AbstractController{
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
 
-        //$favoris =$entityManager->getRepository(Favorite::class)->findBy(['user' => $user]);
+        $favoris =$entityManager->getRepository(Favorite::class)->findBy(['user' => $user]);
 
 
         $favorisRepository = $entityManager->getRepository(Favorite::class);
-        $favoris = $favorisRepository->findAll();
+        // $favoris = $favorisRepository->findAll();
 
         return $this->render('favoris.html.twig',[
             'favoris' => $favoris,
